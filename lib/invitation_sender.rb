@@ -1,6 +1,6 @@
 require 'csv'
 
-class Invitations
+class InvitationSender
   def initialize(csv, message)
     @csv = csv
     @message = message
