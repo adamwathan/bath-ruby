@@ -2,9 +2,8 @@ require 'csv'
 
 class InvitationSender
   def initialize(csv, message)
-    @csv = csv
     @message = message
-    @parser = Parser.new
+    @parser = Parser.new(csv)
   end
 
   def deliver
@@ -16,6 +15,6 @@ class InvitationSender
   private
 
   def recipients
-    CSV.parse(@csv, headers: true).map(&:to_hash)
+    @parser.recipients
   end
 end

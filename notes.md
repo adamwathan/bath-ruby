@@ -67,6 +67,7 @@ Change controller specs to pass in parser
 Todo:
 
 Make InvitationsController
+Make stub_mailer method
 
 
 
