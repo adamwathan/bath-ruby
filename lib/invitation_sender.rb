@@ -8,13 +8,19 @@ class InvitationSender
 
   def deliver
     recipients.each do |recipient|
-      Mailer.invitation(recipient['name'], recipient['email'], @message).deliver
+      Mailer.invitation(
+        recipient['name'],
+        recipient['email'],
+        @message
+      ).deliver
     end
   end
 
   private
 
   def recipients
-    CSV.parse(@csv, headers: true).map(&:to_hash)
+    CSV.
+      parse(@csv, headers: true).
+      map(&:to_hash)
   end
 end

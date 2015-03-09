@@ -12,21 +12,28 @@ describe InvitationSender do
 
       InvitationSender.new(csv, 'hello').deliver
 
-      expect(Mailer).to have_received(:invitation).with(
-        'User One',
-        'one@example.com',
-        'hello'
+      expect(Mailer).to(
+        have_received(:invitation).with(
+          'User One',
+          'one@example.com',
+          'hello'
+        )
       )
-      expect(Mailer).to have_received(:invitation).with(
-        'User Two',
-        'two@example.com',
-        'hello'
+      expect(Mailer).to(
+        have_received(:invitation).with(
+          'User Two',
+          'two@example.com',
+          'hello'
+        )
       )
     end
 
     def stub_mailer
       mailer = double('mailer', deliver: true)
-      allow(Mailer).to receive(:invitation).and_return(mailer)
+      allow(Mailer).to(
+        receive(:invitation).
+        and_return(mailer)
+      )
     end
   end
 end
