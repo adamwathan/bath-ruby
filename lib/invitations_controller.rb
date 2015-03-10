@@ -4,6 +4,5 @@ class InvitationsController < ApplicationController
       params[:csv_file].read,
       params[:message]
     ).deliver
-
   end
 end

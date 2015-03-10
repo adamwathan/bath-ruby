@@ -4,13 +4,13 @@ describe InvitationSender do
   describe '#send' do
     it "sends emails to all invitees in an uploaded CSV" do
       stub_mailer
-      csv = <<-CSV.strip_heredoc
-        email,name
-        one@example.com,User One
-        two@example.com,User Two
-      CSV
+      recipients = [
+        { 'name' => 'User One', 'email' => 'one@example.com' },
+        { 'name' => 'User Two', 'email' => 'two@example.com' }
+      ]
+      parser = double('parser', recipients: recipients)
 
-      InvitationSender.new(csv, 'hello').deliver
+      InvitationSender.new(parser, 'hello').deliver
 
       expect(Mailer).to(
         have_received(:invitation).with(
