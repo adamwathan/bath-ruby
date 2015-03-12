@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "User sends invitations" do
-  it "succeeds" do
+  it "doesn't blow up lol" do
     InvitationsController.new.create
   end
 end
