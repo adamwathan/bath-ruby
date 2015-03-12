@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe InvitationSender do
+describe Invitations do
   describe '#send' do
     it "sends emails to all invitees in an uploaded CSV" do
       stub_mailer
@@ -10,7 +10,7 @@ describe InvitationSender do
         two@example.com,User Two
       CSV
 
-      InvitationSender.new(csv, 'hello').deliver
+      Invitations.new(csv, 'hello').deliver
 
       expect(Mailer).to(
         have_received(:invitation).with(

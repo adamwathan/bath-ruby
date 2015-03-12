@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
   def create
-    InvitationSender.new(
+    Invitations.new(
       params[:csv_file].read,
       params[:message]
     ).deliver
